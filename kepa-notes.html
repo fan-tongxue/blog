@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>《可怕的两岁》读书笔记 · 病恹恹的全职奶爸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a18;
+      --ink-light: #6b6b60;
+      --ink-faint: #c8c8b8;
+      --paper: #faf9f6;
+      --paper-warm: #f3f1eb;
+      --accent: #5c7a5c;
+      --accent-pale: #e8ede8;
+      --dissent: #7a5c3a;
+      --dissent-pale: #f0ece4;
+      --agree: #3a5c5c;
+      --agree-pale: #e4ecec;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+      font-weight: 300;
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .site-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      padding: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--paper-warm);
+      animation: fadeUp .5s ease both;
+    }
+
+    .topbar-home {
+      font-size: .78rem;
+      letter-spacing: .15em;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .topbar-home:hover { color: var(--accent); }
+
+    .topbar-site {
+      font-family: 'Noto Serif SC', serif;
+      font-size: .88rem;
+      font-weight: 300;
+      letter-spacing: .08em;
+      color: var(--ink-faint);
+    }
+
+    /* ── Article header ── */
+    .article-header {
+      padding: 4rem 0 2rem;
+      animation: fadeUp .7s .1s ease both;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+      flex-wrap: wrap;
+    }
+
+    .article-date {
+      font-size: .75rem;
+      letter-spacing: .1em;
+      color: var(--ink-faint);
+    }
+
+    .article-tag {
+      font-size: .7rem;
+      letter-spacing: .1em;
+      color: var(--accent);
+      background: var(--accent-pale);
+      padding: .15rem .6rem;
+      border-radius: 2px;
+    }
+
+    .article-title {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 400;
+      font-size: 1.7rem;
+      line-height: 1.5;
+      letter-spacing: .05em;
+      color: var(--ink);
+      margin-bottom: .6rem;
+    }
+
+    .book-info {
+      display: flex;
+      gap: 1.5rem;
+      margin: 1.6rem 0;
+      padding: 1.4rem 1.6rem;
+      background: var(--paper-warm);
+      border-radius: 4px;
+      flex-wrap: wrap;
+    }
+
+    .book-info-item {
+      font-size: .78rem;
+      color: var(--ink-light);
+      letter-spacing: .06em;
+    }
+
+    .book-info-item strong {
+      color: var(--ink);
+      font-weight: 400;
+      display: block;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      color: var(--ink-faint);
+      margin-bottom: .2rem;
+    }
+
+    .article-intro {
+      font-size: .93rem;
+      color: var(--ink-light);
+      line-height: 1.9;
+      letter-spacing: .04em;
+      padding-left: 1rem;
+      border-left: 2px solid var(--accent);
+      margin-top: 1.4rem;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      margin: 2.5rem 0;
+      padding: 1.4rem 1.6rem;
+      background: var(--paper-warm);
+      border-radius: 4px;
+      animation: fadeUp .7s .2s ease both;
+    }
+
+    .toc-label {
+      font-size: .7rem;
+      letter-spacing: .2em;
+      color: var(--ink-faint);
+      margin-bottom: .8rem;
+      display: block;
+    }
+
+    .toc ol {
+      padding-left: 1.2rem;
+      counter-reset: none;
+    }
+
+    .toc li {
+      font-size: .85rem;
+      color: var(--ink-light);
+      margin-bottom: .3rem;
+      letter-spacing: .04em;
+    }
+
+    .toc a {
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .toc a:hover { color: var(--accent); }
+
+    /* ── Article body ── */
+    .article-body {
+      padding: 1rem 0 5rem;
+      animation: fadeUp .7s .25s ease both;
+    }
+
+    .article-body p {
+      font-size: .93rem;
+      line-height: 1.95;
+      letter-spacing: .04em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Point block */
+    .point-block {
+      margin: 3.5rem 0;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--paper-warm);
+    }
+
+    .point-number {
+      font-size: .68rem;
+      letter-spacing: .2em;
+      color: var(--ink-faint);
+      margin-bottom: .5rem;
+    }
+
+    .point-title {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 400;
+      font-size: 1.18rem;
+      letter-spacing: .06em;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+      line-height: 1.55;
+    }
+
+    /* Book says */
+    .book-says {
+      margin: 1.4rem 0;
+    }
+
+    .block-label {
+      font-size: .68rem;
+      letter-spacing: .2em;
+      color: var(--ink-faint);
+      margin-bottom: .6rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .block-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--ink-faint);
+      opacity: .4;
+    }
+
+    .book-says p {
+      font-size: .9rem !important;
+      color: var(--ink-light) !important;
+      line-height: 1.9 !important;
+      margin-bottom: .9rem !important;
+    }
+
+    .book-quote {
+      padding: 1rem 1.3rem;
+      background: var(--paper-warm);
+      border-left: 2px solid var(--ink-faint);
+      margin: 1rem 0;
+      font-size: .85rem !important;
+      color: var(--ink-light) !important;
+      font-style: normal;
+      line-height: 1.85;
+    }
+
+    /* Xiao Wu observation */
+    .xiaowu-box {
+      margin: 1.4rem 0;
+      padding: 1.3rem 1.5rem;
+      background: var(--agree-pale);
+      border-radius: 4px;
+      border-left: 3px solid var(--agree);
+    }
+
+    .xiaowu-box.pending {
+      background: #f5f5f2;
+      border-left-color: var(--ink-faint);
+    }
+
+    .xiaowu-box p {
+      font-size: .88rem !important;
+      color: var(--ink-light) !important;
+      margin-bottom: .5rem !important;
+    }
+
+    .xiaowu-box p:last-child { margin-bottom: 0 !important; }
+
+    .xiaowu-placeholder {
+      font-size: .83rem;
+      color: var(--ink-faint);
+      font-style: italic;
+      letter-spacing: .04em;
+    }
+
+    /* Dad's view */
+    .dad-view {
+      margin: 1.4rem 0;
+    }
+
+    .dad-view.agree .dad-content {
+      padding: 1.2rem 1.4rem;
+      background: var(--agree-pale);
+      border-radius: 4px;
+    }
+
+    .dad-view.dissent .dad-content {
+      padding: 1.2rem 1.4rem;
+      background: var(--dissent-pale);
+      border-radius: 4px;
+    }
+
+    .dad-view.neutral .dad-content {
+      padding: 1.2rem 1.4rem;
+      background: var(--paper-warm);
+      border-radius: 4px;
+    }
+
+    .view-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .68rem;
+      letter-spacing: .15em;
+      padding: .2rem .65rem;
+      border-radius: 2px;
+      margin-bottom: .7rem;
+    }
+
+    .badge-agree {
+      color: var(--agree);
+      background: var(--agree-pale);
+    }
+
+    .badge-dissent {
+      color: var(--dissent);
+      background: var(--dissent-pale);
+    }
+
+    .badge-neutral {
+      color: var(--ink-light);
+      background: var(--paper-warm);
+    }
+
+    .dad-content p {
+      font-size: .9rem !important;
+      color: var(--ink) !important;
+      margin-bottom: .7rem !important;
+    }
+
+    .dad-content p:last-child { margin-bottom: 0 !important; }
+
+    /* Summary */
+    .summary-box {
+      margin: 4rem 0 2rem;
+      padding: 1.6rem 1.8rem;
+      background: var(--accent-pale);
+      border-radius: 4px;
+    }
+
+    .summary-box .block-label {
+      color: var(--accent);
+    }
+
+    .summary-box p {
+      font-size: .88rem !important;
+      color: var(--ink-light) !important;
+    }
+
+    .summary-box ul {
+      padding-left: 1.2rem;
+      margin-top: .5rem;
+    }
+
+    .summary-box li {
+      font-size: .88rem;
+      color: var(--ink-light);
+      margin-bottom: .4rem;
+      line-height: 1.8;
+    }
+
+    /* End note */
+    .article-endnote {
+      margin-top: 3rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--paper-warm);
+      font-size: .78rem;
+      color: var(--ink-faint);
+      letter-spacing: .06em;
+      line-height: 2;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem 0 4rem;
+      font-size: .75rem;
+      color: var(--ink-faint);
+      letter-spacing: .1em;
+      line-height: 2;
+      border-top: 1px solid var(--paper-warm);
+    }
+
+    footer a { color: var(--ink-faint); text-decoration: none; }
+    footer a:hover { color: var(--ink-light); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .site-wrap { padding: 0 1.4rem; }
+      .article-title { font-size: 1.4rem; }
+      .article-header { padding: 2.8rem 0 1.5rem; }
+      .book-info { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="site-wrap">
+
+  <div class="topbar">
+    <a class="topbar-home" href="index.html">← 返回首页</a>
+    <span class="topbar-site">病恹恹的全职奶爸</span>
+  </div>
+
+  <header class="article-header">
+    <div class="article-meta">
+      <span class="article-date">2025 · 04 · 02</span>
+      <span class="article-tag">读书笔记</span>
+      <span class="article-tag">管教理念</span>
+    </div>
+    <h1 class="article-title">《可怕的两岁》：一本让我又同意又想反驳的育儿书</h1>
+
+    <div class="book-info">
+      <div class="book-info-item">
+        <strong>书名</strong>
+        Making the "Terrible" Twos Terrific!
+      </div>
+      <div class="book-info-item">
+        <strong>作者</strong>
+        约翰·罗斯蒙德（美）
+      </div>
+      <div class="book-info-item">
+        <strong>核心立场</strong>
+        传统权威式育儿 vs. 现代以孩子为中心
+      </div>
+    </div>
+
+    <p class="article-intro">
+      这本书的主张很清晰，也很冒犯：现代父母把孩子养坏了，因为他们把孩子放在了家庭的中心。罗斯蒙德认为，两岁是从"服务季"向"权威季"过渡的关键年，父母如果错过这个窗口，后果会延续到青春期。我在小伍身上对照了书中的核心论点，有些地方高度吻合，有些地方我有不同看法。
+    </p>
+  </header>
+
+  <nav class="toc">
+    <span class="toc-label">文章结构</span>
+    <ol>
+      <li><a href="#point1">论点一：孩子天生以自我为中心，两岁是纠正的窗口期</a></li>
+      <li><a href="#point2">论点二：育儿有"季节"，两岁后父母应从仆人变成权威</a></li>
+      <li><a href="#point3">论点三：过度关注是毒药，孩子需要的是界限而非陪伴</a></li>
+      <li><a href="#point4">论点四：管教是管理，不是惩罚——"趁凉打铁"原则</a></li>
+      <li><a href="#point5">论点五：玩具越少越好，电视是发展的天敌</a></li>
+      <li><a href="#point6">论点六：两岁的不良行为只能"控制"，不能"纠正"</a></li>
+      <li><a href="#point7">论点七：睡眠、如厕、发脾气——用空间边界代替说教</a></li>
+      <li><a href="#summary">我的综合评价</a></li>
+    </ol>
+  </nav>
+
+  <article class="article-body">
+
+    <!-- ══ POINT 1 ══ -->
+    <div class="point-block" id="point1">
+      <div class="point-number">论点 01</div>
+      <h2 class="point-title">孩子天生以自我为中心，两岁是纠正的窗口期</h2>
+
+      <div class="book-says">
+        <div class="block-label">书的观点</div>
+        <p>罗斯蒙德引用皮亚杰的研究：婴儿出生后的最初两年，天然认为自己是宇宙中心。饿了有人喂、累了有人抱、哭了有人来——这些回应在客观上"证实"了孩子的自我主宰感。这是正常的，甚至是必要的。</p>
+        <p>但问题在于，如果父母在孩子两岁之后继续维持这种模式，孩子就会认为"第一季"将永远延续下去。两岁是孩子开始形成自我意识的节点，同时也是父母开始转变角色的时机。错过这个窗口，不良行为模式会一直延续——书中有个极端案例：一个两岁时拒绝承认自己在角落排便的孩子，十六岁时用完全相同的方式否认在车里喝酒。</p>
+        <div class="book-quote">
+          "你两岁时开的头，今后还在起作用。两岁时亲子关系良好预示着十四岁时关系依旧。"
+        </div>
+      </div>
+
+      <div class="xiaowu-box pending">
+        <div class="block-label">小伍对照</div>
+        <p class="xiaowu-placeholder">【待填写】小伍现在多大？有没有出现书中描述的"宇宙中心"行为——比如发现父母不再即时回应时的愤怒？你观察到他的自我意识是何时开始萌发的？</p>
+      </div>
+
+      <div class="dad-view neutral">
+        <div class="view-badge badge-neutral">奶爸观点 · 部分认同</div>
+        <div class="dad-content">
+          <p>【待填写】你对这个"窗口期"理论怎么看？两岁是否真的有那么关键？你在小伍身上是否感受到了这个转折？</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ POINT 2 ══ -->
+    <div class="point-block" id="point2">
+      <div class="point-number">论点 02</div>
+      <h2 class="point-title">育儿有"季节"：两岁后从仆人变权威</h2>
+
+      <div class="book-says">
+        <div class="block-label">书的观点</div>
+        <p>罗斯蒙德将育儿分为三个阶段：</p>
+        <p><strong>第一季（0—2岁）：服务季。</strong>父母是孩子的首席仆人，这是必要的。孩子完全依赖，父母必须以孩子为中心。</p>
+        <p><strong>第二季（2—13岁）：权威季。</strong>父母不再围着孩子转，而是让孩子围着父母转。从孩子为中心转变为父母为中心。母亲需要从"全职母亲"退回到"兼职母亲"——孩子学会自娱自乐，母亲有权做自己的事。</p>
+        <p><strong>第三季（13岁以后）：指导季。</strong>父母退居顾问，帮孩子获得独立生活的技能。</p>
+        <p>书中特别强调：婚姻关系的地位应高于亲子关系。父母关系稳固，才是孩子安全感最深的来源。</p>
+      </div>
+
+      <div class="xiaowu-box pending">
+        <div class="block-label">小伍对照</div>
+        <p class="xiaowu-placeholder">【待填写】你现在的育儿状态更接近"服务季"还是已经开始转型？有没有刻意让小伍自己待着、不即时回应他的时刻？他的反应是什么？</p>
+      </div>
+
+      <div class="dad-view dissent">
+        <div class="view-badge badge-dissent">奶爸观点 · 有保留</div>
+        <div class="dad-content">
+          <p>【待填写】"兼职母亲"这个概念在两性分工上有一定预设——书中大量篇幅谈的是"母亲"，你作为全职奶爸，这套框架套在你身上时有没有哪里不对劲？婚姻关系优先于亲子关系这个主张，你认同吗？</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ POINT 3 ══ -->
+    <div class="point-block" id="point3">
+      <div class="point-number">论点 03</div>
+      <h2 class="point-title">过度关注是毒药，界限比陪伴更重要</h2>
+
+      <div class="book-says">
+        <div class="block-label">书的观点</div>
+        <p>书中批评了1970年代以来兴起的"以孩子为中心"育儿理念——代表人物是托马斯·戈登（《父母效能训练》作者）。罗斯蒙德认为，父母给予孩子的关注越多，孩子越会要求更多，因为孩子把"被关注"等同于"自我价值"。</p>
+        <p>一个健康的三岁孩子，应该能够自娱自乐至少1小时，不需要成人的主动介入。发育心理学家伯顿·怀特也持相同观点。</p>
+        <p>书中明确说：父母有权对孩子说"我现在没时间理你"。不这样做，不是爱，是在培养依赖。</p>
+        <div class="book-quote">
+          "父母越关注孩子，孩子就越不关注父母，还会要求更多关注。"
+        </div>
+      </div>
+
+      <div class="xiaowu-box pending">
+        <div class="block-label">小伍对照</div>
+        <p class="xiaowu-placeholder">【待填写】小伍能自己玩多长时间？他会不会频繁中断你正在做的事来寻求关注？当你不理他时，他的反应是愤怒、自己想办法，还是平静接受？</p>
+      </div>
+
+      <div class="dad-view agree">
+        <div class="view-badge badge-agree">奶爸观点 · 基本认同</div>
+        <div class="dad-content">
+          <p>【待填写】你在内容账号里聊的"系统性养娃"框架，和这个论点是否有共鸣之处？在全职看娃的场景下，如何区分"必要回应"和"过度关注"？</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ POINT 4 ══ -->
+    <div class="point-block" id="point4">
+      <div class="point-number">论点 04</div>
+      <h2 class="point-title">管教是管理，不是惩罚——"趁凉打铁"原则</h2>
+
+      <div class="book-says">
+        <div class="block-label">书的观点</div>
+        <p>罗斯蒙德区分了两种截然不同的管教思路：</p>
+        <p><strong>惩罚思路（被动/情绪化）：</strong>出了问题才反应，情绪化，前后不一致，容易引发权力争斗。</p>
+        <p><strong>管理思路（主动/前瞻性）：</strong>提前预见问题，制定策略，用平静的姿态执行。他称之为"趁凉打铁"——在问题出现之前就做好准备。</p>
+        <p>有效沟通三原则：<strong>具体、简洁、命令（而非请求）</strong>。不要说"禁止爬桌子"，要说"下来"。不要解释原因，解释会招致争论，而两岁的孩子根本无法被说服。</p>
+        <p>"我说了算"就是孩子唯一需要的解释。不是因为父母蛮横，而是因为孩子的大脑尚不具备理解复杂因果的能力。</p>
+      </div>
+
+      <div class="xiaowu-box pending">
+        <div class="block-label">小伍对照</div>
+        <p class="xiaowu-placeholder">【待填写】你在处理小伍的不当行为时，更倾向于事前预防还是事后反应？有没有试过简洁命令的效果？他对"请求"和"命令"的反应有区别吗？</p>
+      </div>
+
+      <div class="dad-view agree">
+        <div class="view-badge badge-agree">奶爸观点 · 强烈认同</div>
+        <div class="dad-content">
+          <p>【待填写】"趁凉打铁"这个概念是否和你的系统性思维方式高度契合？在FODMAP饮食管理等框架里，你本来就是"提前设计系统，减少临场决策"的思路，这里是否也一样？</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ POINT 5 ══ -->
+    <div class="point-block" id="point5">
+      <div class="point-number">论点 05</div>
+      <h2 class="point-title">玩具越少越好，电视是发展的天敌</h2>
+
+      <div class="book-says">
+        <div class="block-label">书的观点</div>
+        <p>书中给出了一个简洁的判断标准：1955年以前就在生产的玩具，通常是好玩具（积木、蜡笔、娃娃、空纸箱）；之后大多数玩具是形态固定的，无法激发创造力。</p>
+        <p>玩具的"可玩性"取决于三个维度：耐用性、灵活多变性、发展适应性。玩具太多的直接后果是孩子反而无法专注，进而更多地依赖父母来填补无聊。</p>
+        <p>关于电视（今天可以理解为所有屏幕内容）：不加区分地看，哪怕是《芝麻街》，都是在占用本该用来建立感知-运动-认知-语言能力的宝贵时间。一项研究显示，有天赋的学龄前儿童平均每周看电视不超过5小时，全国平均值是20小时。</p>
+      </div>
+
+      <div class="xiaowu-box pending">
+        <div class="block-label">小伍对照</div>
+        <p class="xiaowu-placeholder">【待填写】小伍现在有哪些玩具？他自己玩得最久的是哪种？你们在屏幕时间上是什么策略？他有没有表现出"被动等待娱乐"的状态？</p>
+      </div>
+
+      <div class="dad-view agree">
+        <div class="view-badge badge-agree">奶爸观点 · 认同核心，有补充</div>
+        <div class="dad-content">
+          <p>【待填写】你在给小伍做英语启蒙时用的是视频内容（Super Simple Songs等），这是否与"少屏幕"原则形成张力？你怎么在"有价值的内容"和"屏幕本身的消极效应"之间权衡？</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ POINT 6 ══ -->
+    <div class="point-block" id="point6">
+      <div class="point-number">论点 06</div>
+      <h2 class="point-title">两岁的问题只能"控制"，不能"纠正"</h2>
+
+      <div class="book-says">
+        <div class="block-label">书的观点</div>
+        <p>这是书中最实用的一个区分：两岁孩子没有先见之明，也没有后见之明，因果意识尚未成熟。父母的目标不是"让他改掉坏习惯"，而是"把坏行为控制在可管理的范围内，等他大脑发育好了再纠正"。</p>
+        <p>书中举例：女儿发脾气，父母试过打屁股、忽视，都没用。最终，他们把一个浴室改成"情绪发泄室"——孩子想发脾气，就去那里发。不是在教她不发脾气，而是把这件事控制在一个边界里。孩子到三岁后，随着耐挫力提升，问题自然减少。</p>
+        <p>睡眠问题也用了同样的思路：把卧室门做成两截门，孩子锁在里面可以看到外面但不能出来。不是在纠正他不肯睡觉，而是控制他不能来扰乱父母。</p>
+      </div>
+
+      <div class="xiaowu-box pending">
+        <div class="block-label">小伍对照</div>
+        <p class="xiaowu-placeholder">【待填写】小伍现在有没有某些行为是你反复试图纠正却效果不稳定的？比如饮食上的挑剔、情绪爆发、睡眠抵抗？你有没有尝试过"控制而非纠正"的策略？</p>
+      </div>
+
+      <div class="dad-view dissent">
+        <div class="view-badge badge-dissent">奶爸观点 · 有保留</div>
+        <div class="dad-content">
+          <p>【待填写】"控制"和"纠正"的边界在实践中很难清晰划定。书中的两截门方案，你会接受吗？当孩子在一个封闭空间里愤怒哭闹时，你如何看待他的情绪体验——是必要的挫折教育，还是有让他感到被遗弃的风险？</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ POINT 7 ══ -->
+    <div class="point-block" id="point7">
+      <div class="point-number">论点 07</div>
+      <h2 class="point-title">发脾气、睡眠、撒谎——用空间边界代替说教</h2>
+
+      <div class="book-says">
+        <div class="block-label">书的观点</div>
+        <p>罗斯蒙德对一系列具体问题都给出了相似的解法框架：<strong>用物理/空间边界取代语言说服</strong>。</p>
+        <p>对于发脾气：设一个"情绪发泄室"，只能在那里发，不打断家庭正常运作。对于睡眠抵抗：两截门，孩子锁在房间但能看到外面，父母每几分钟来一次说一句"一切都好，你该睡觉了"然后离开。对于打人/咬人：立即带回卧室关10分钟，平静执行，不解释不训斥。</p>
+        <p>核心逻辑是：两岁孩子无法被"说通"，但他们能感知到父母的坚定性。坚定的态度本身比任何解释都更有说服力。孩子在混乱中最需要的是感受到"父母能控制这一切"，这反而让他产生安全感。</p>
+      </div>
+
+      <div class="xiaowu-box pending">
+        <div class="block-label">小伍对照</div>
+        <p class="xiaowu-placeholder">【待填写】小伍的睡眠状况怎么样？你们现在用什么方式处理他的情绪爆发？有没有试过书中这类"用空间替代说教"的方法，或者类似的变体？</p>
+      </div>
+
+      <div class="dad-view neutral">
+        <div class="view-badge badge-neutral">奶爸观点 · 复杂</div>
+        <div class="dad-content">
+          <p>【待填写】这套"空间边界"方案背后有一个前提：父母的平静是真实的，不是压抑。你在执行这类方案时，内心的状态是什么？有没有觉得"平静执行"本身就很难的时候？</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SUMMARY ══ -->
+    <div class="summary-box" id="summary">
+      <div class="block-label">综合评价</div>
+      <p>【待填写，以下是框架建议】</p>
+      <p>这本书值得推荐给哪类父母？不值得推荐给哪类？你会从中拿走什么、放弃什么？</p>
+    </div>
+
+    <div class="article-endnote">
+      <p>写于 2025 年 4 月 · 北京</p>
+      <p>参考：约翰·罗斯蒙德《可怕的两岁》（北京科学技术出版社，2017）· 让·皮亚杰发展心理学理论 · 伯顿·L·怀特《从出生到三岁》</p>
+    </div>
+  </article>
+
+  <footer>
+    <p>© 2025 病恹恹的全职奶爸</p>
+    <p style="margin-top:.4rem">
+      小红书：<a href="#">@病恹恹的全职奶爸</a>
+      &nbsp;·&nbsp;
+      微信公众号：<a href="#">范同学</a>
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

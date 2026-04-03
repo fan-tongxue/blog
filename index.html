@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>病恹恹的全职奶爸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a18;
+      --ink-light: #6b6b60;
+      --ink-faint: #c8c8b8;
+      --paper: #faf9f6;
+      --paper-warm: #f3f1eb;
+      --accent: #5c7a5c;
+      --accent-pale: #e8ede8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .site-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 5rem 0 3.5rem;
+      animation: fadeUp .8s ease both;
+    }
+
+    .site-title {
+      font-family: 'Noto Serif SC', 'Songti SC', serif;
+      font-weight: 300;
+      font-size: 1.7rem;
+      letter-spacing: .12em;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: .9rem;
+    }
+
+    .site-title span {
+      display: block;
+      font-size: .85rem;
+      font-family: 'Noto Sans SC', sans-serif;
+      font-weight: 300;
+      letter-spacing: .25em;
+      color: var(--ink-light);
+      margin-top: .4rem;
+    }
+
+    .site-desc {
+      font-size: .88rem;
+      color: var(--ink-light);
+      letter-spacing: .04em;
+      max-width: 32em;
+      line-height: 1.9;
+    }
+
+    .header-rule {
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+      margin: 2rem 0;
+      opacity: .6;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      gap: 1.8rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--ink-faint);
+      animation: fadeUp .8s .1s ease both;
+    }
+
+    nav a {
+      font-size: .8rem;
+      letter-spacing: .18em;
+      color: var(--ink-light);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--accent);
+    }
+
+    /* ── Article list ── */
+    .article-list {
+      padding: 3rem 0;
+    }
+
+    .article-item {
+      padding: 2.4rem 0;
+      border-bottom: 1px solid var(--paper-warm);
+      animation: fadeUp .6s ease both;
+      cursor: pointer;
+    }
+
+    .article-item:first-child { padding-top: 0; }
+
+    .article-item:hover .article-title {
+      color: var(--accent);
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: .75rem;
+    }
+
+    .article-date {
+      font-size: .75rem;
+      letter-spacing: .1em;
+      color: var(--ink-faint);
+    }
+
+    .article-tag {
+      font-size: .7rem;
+      letter-spacing: .1em;
+      color: var(--accent);
+      background: var(--accent-pale);
+      padding: .15rem .6rem;
+      border-radius: 2px;
+    }
+
+    .article-title {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 400;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      letter-spacing: .05em;
+      color: var(--ink);
+      margin-bottom: .65rem;
+      transition: color .2s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .article-excerpt {
+      font-size: .85rem;
+      color: var(--ink-light);
+      line-height: 1.85;
+      letter-spacing: .03em;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .article-readmore {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: .9rem;
+      font-size: .75rem;
+      letter-spacing: .15em;
+      color: var(--ink-faint);
+      text-decoration: none;
+      transition: color .2s, gap .2s;
+    }
+
+    .article-item:hover .article-readmore {
+      color: var(--accent);
+      gap: .7rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 3rem 0 5rem;
+      font-size: .75rem;
+      color: var(--ink-faint);
+      letter-spacing: .1em;
+      line-height: 2;
+    }
+
+    footer a {
+      color: var(--ink-faint);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--ink-light); }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .article-item:nth-child(1) { animation-delay: .15s; }
+    .article-item:nth-child(2) { animation-delay: .25s; }
+    .article-item:nth-child(3) { animation-delay: .35s; }
+    .article-item:nth-child(4) { animation-delay: .45s; }
+    .article-item:nth-child(5) { animation-delay: .55s; }
+
+    /* ── Mobile ── */
+    @media (max-width: 480px) {
+      .site-wrap { padding: 0 1.4rem; }
+      header { padding: 3.5rem 0 2.5rem; }
+      .site-title { font-size: 1.45rem; }
+      nav { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-wrap">
+
+    <header>
+      <h1 class="site-title">
+        病恹恹的全职奶爸
+        <span>A Stay-at-Home Father's Notes</span>
+      </h1>
+      <div class="header-rule"></div>
+      <p class="site-desc">用系统性思维养娃。关于辅食、喂养方法论、以及一个全职奶爸的观察与实践。</p>
+    </header>
+
+    <nav>
+      <a href="index.html" class="active">全部文章</a>
+      <a href="#">辅食方法论</a>
+      <a href="#">喂养思考</a>
+      <a href="#">关于</a>
+    </nav>
+
+    <main class="article-list">
+
+      <!-- 示例文章 1 -->
+      <article class="article-item" onclick="location.href='article-template.html'">
+        <div class="article-meta">
+          <span class="article-date">2025 · 04 · 02</span>
+          <span class="article-tag">辅食方法论</span>
+        </div>
+        <a class="article-title" href="article-template.html">
+          为什么我不用市售米粉开始辅食：一个奶爸的重新推导
+        </a>
+        <p class="article-excerpt">
+          大多数辅食添加建议都是从"方便"出发的，而不是从婴儿肠道发育出发的。当我开始认真研究辅食这件事，第一个被推翻的认知就是"米粉是最安全的第一口辅食"……
+        </p>
+        <a class="article-readmore" href="article-template.html">阅读全文 →</a>
+      </article>
+
+      <!-- 示例文章 2 -->
+      <article class="article-item">
+        <div class="article-meta">
+          <span class="article-date">2025 · 03 · 18</span>
+          <span class="article-tag">喂养思考</span>
+        </div>
+        <a class="article-title" href="#">
+          过敏排查不是玄学：我如何用排除法找到小伍的不耐受食物
+        </a>
+        <p class="article-excerpt">
+          "孩子湿疹是过敏"是一个被说烂了的结论，但真正执行排查的家庭少之又少。排除法的核心不是猜测，而是控制变量……
+        </p>
+        <a class="article-readmore" href="#">阅读全文 →</a>
+      </article>
+
+      <!-- 示例文章 3 -->
+      <article class="article-item">
+        <div class="article-meta">
+          <span class="article-date">2025 · 03 · 05</span>
+          <span class="article-tag">辅食方法论</span>
+        </div>
+        <a class="article-title" href="#">
+          FODMAP 视角下的婴儿辅食：哪些蔬菜值得优先引入
+        </a>
+        <p class="article-excerpt">
+          FODMAP 是为肠易激综合征患者设计的饮食框架，但它对婴儿肠道尚未成熟这个事实有很强的解释力。低 FODMAP 蔬菜往往也是婴儿消化负担最轻的……
+        </p>
+        <a class="article-readmore" href="#">阅读全文 →</a>
+      </article>
+
+      <!-- 示例文章 4 -->
+      <article class="article-item">
+        <div class="article-meta">
+          <span class="article-date">2025 · 02 · 20</span>
+          <span class="article-tag">喂养思考</span>
+        </div>
+        <a class="article-title" href="#">
+          肠胃炎之后的辅食重建：我们做了什么，没做什么
+        </a>
+        <p class="article-excerpt">
+          小伍上个月经历了一次胃肠炎，三天内体重明显下降。病后恢复期的喂养决策比日常更难，因为你同时要兼顾补充能量和保护还在修复的肠黏膜……
+        </p>
+        <a class="article-readmore" href="#">阅读全文 →</a>
+      </article>
+
+    </main>
+
+    <footer>
+      <p>© 2025 病恹恹的全职奶爸</p>
+      <p style="margin-top:.4rem">
+        小红书：<a href="#">@病恹恹的全职奶爸</a>
+        &nbsp;·&nbsp;
+        微信公众号：<a href="#">范同学</a>
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>

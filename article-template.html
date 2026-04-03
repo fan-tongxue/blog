@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章标题 · 病恹恹的全职奶爸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a18;
+      --ink-light: #6b6b60;
+      --ink-faint: #c8c8b8;
+      --paper: #faf9f6;
+      --paper-warm: #f3f1eb;
+      --accent: #5c7a5c;
+      --accent-pale: #e8ede8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+      font-weight: 300;
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .site-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      padding: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--paper-warm);
+      animation: fadeUp .5s ease both;
+    }
+
+    .topbar-home {
+      font-size: .78rem;
+      letter-spacing: .15em;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .topbar-home:hover { color: var(--accent); }
+
+    .topbar-site {
+      font-family: 'Noto Serif SC', serif;
+      font-size: .88rem;
+      font-weight: 300;
+      letter-spacing: .08em;
+      color: var(--ink-faint);
+    }
+
+    /* ── Article header ── */
+    .article-header {
+      padding: 4rem 0 2.5rem;
+      animation: fadeUp .7s .1s ease both;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .article-date {
+      font-size: .75rem;
+      letter-spacing: .1em;
+      color: var(--ink-faint);
+    }
+
+    .article-tag {
+      font-size: .7rem;
+      letter-spacing: .1em;
+      color: var(--accent);
+      background: var(--accent-pale);
+      padding: .15rem .6rem;
+      border-radius: 2px;
+    }
+
+    .article-title {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 400;
+      font-size: 1.75rem;
+      line-height: 1.5;
+      letter-spacing: .05em;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+    }
+
+    .article-subtitle {
+      font-size: .95rem;
+      color: var(--ink-light);
+      line-height: 1.8;
+      letter-spacing: .04em;
+      padding-left: 1rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    /* ── Article body ── */
+    .article-body {
+      padding: 3rem 0 5rem;
+      animation: fadeUp .7s .2s ease both;
+    }
+
+    /* Paragraphs */
+    .article-body p {
+      font-size: .95rem;
+      line-height: 1.95;
+      letter-spacing: .04em;
+      color: var(--ink);
+      margin-bottom: 1.6rem;
+    }
+
+    /* Headings */
+    .article-body h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 400;
+      font-size: 1.2rem;
+      letter-spacing: .08em;
+      color: var(--ink);
+      margin: 3rem 0 1.2rem;
+      padding-bottom: .6rem;
+      border-bottom: 1px solid var(--paper-warm);
+    }
+
+    .article-body h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 400;
+      font-size: 1rem;
+      letter-spacing: .06em;
+      color: var(--ink);
+      margin: 2.2rem 0 .9rem;
+    }
+
+    .article-body h3::before {
+      content: '·';
+      color: var(--accent);
+      margin-right: .5rem;
+    }
+
+    /* Lists */
+    .article-body ul, .article-body ol {
+      padding-left: 1.4rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body li {
+      font-size: .93rem;
+      line-height: 1.9;
+      letter-spacing: .04em;
+      margin-bottom: .4rem;
+      color: var(--ink);
+    }
+
+    /* Blockquote */
+    .article-body blockquote {
+      margin: 2rem 0;
+      padding: 1.2rem 1.4rem;
+      background: var(--paper-warm);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .article-body blockquote p {
+      margin: 0;
+      font-size: .9rem;
+      color: var(--ink-light);
+      font-style: normal;
+    }
+
+    /* Callout box */
+    .callout {
+      margin: 2.2rem 0;
+      padding: 1.4rem 1.6rem;
+      background: var(--accent-pale);
+      border-radius: 4px;
+    }
+
+    .callout-label {
+      font-size: .7rem;
+      letter-spacing: .2em;
+      color: var(--accent);
+      margin-bottom: .6rem;
+      display: block;
+    }
+
+    .callout p {
+      margin: 0 !important;
+      font-size: .88rem !important;
+      color: var(--ink-light) !important;
+    }
+
+    /* Divider */
+    .article-body hr {
+      border: none;
+      height: 1px;
+      background: var(--ink-faint);
+      margin: 3rem auto;
+      width: 4rem;
+      opacity: .4;
+    }
+
+    /* Strong */
+    .article-body strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* ── End note ── */
+    .article-endnote {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--paper-warm);
+      font-size: .8rem;
+      color: var(--ink-faint);
+      letter-spacing: .06em;
+      line-height: 2;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2rem 0 4rem;
+      font-size: .75rem;
+      color: var(--ink-faint);
+      letter-spacing: .1em;
+      line-height: 2;
+      border-top: 1px solid var(--paper-warm);
+    }
+
+    footer a {
+      color: var(--ink-faint);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--ink-light); }
+
+    /* ── Animation ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 480px) {
+      .site-wrap { padding: 0 1.4rem; }
+      .article-title { font-size: 1.4rem; }
+      .article-header { padding: 2.8rem 0 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-wrap">
+
+    <div class="topbar">
+      <a class="topbar-home" href="index.html">← 返回首页</a>
+      <span class="topbar-site">病恹恹的全职奶爸</span>
+    </div>
+
+    <!-- ══ 文章头部：每篇修改这里 ══ -->
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="article-date">2025 · 04 · 02</span>
+        <span class="article-tag">辅食方法论</span>
+      </div>
+      <h1 class="article-title">
+        为什么我不用市售米粉开始辅食：<br>一个奶爸的重新推导
+      </h1>
+      <p class="article-subtitle">
+        大多数辅食建议是从"方便"出发的，而不是从婴儿肠道发育出发的。这篇文章记录我如何一步步推翻自己的预设认知。
+      </p>
+    </header>
+
+    <!-- ══ 文章正文：替换为 Claude 生成的内容 ══ -->
+    <article class="article-body">
+
+      <p>
+        在小伍满六个月之前，我和大多数新手父母一样，默认第一口辅食应该是婴儿米粉。这个认知来自周围人的建议、母婴店的推荐，以及一种模糊的直觉——"米是最温和的"。
+      </p>
+
+      <p>
+        直到我开始认真查资料，才发现这个"默认值"背后，其实是一个没有被认真推导过的假设。
+      </p>
+
+      <h2>婴儿淀粉酶的发育时间线</h2>
+
+      <p>
+        人体消化淀粉依赖两种酶：唾液淀粉酶和胰腺淀粉酶。成人两者都有，而婴儿在六个月左右，这两种酶的活性都还非常低——尤其是胰腺淀粉酶，要到两岁左右才接近成人水平。
+      </p>
+
+      <blockquote>
+        <p>消化不完全的淀粉进入大肠后，会被肠道菌群发酵，产生气体和短链脂肪酸，这正是很多宝宝吃米粉后胀气、排气增多的原因。</p>
+      </blockquote>
+
+      <p>
+        这并不是说米粉"有害"，而是说它并不像我们想象的那样"最好消化"。从酶的角度看，蛋黄里的脂肪和蛋白质、南瓜里的单糖，反而更符合婴儿消化系统的现状。
+      </p>
+
+      <h2>市售米粉的另一个问题：强化铁</h2>
+
+      <p>
+        婴儿米粉被推荐的另一个理由是"强化铁"。六个月后，母乳中的铁含量确实不足以满足需求，这是真实存在的问题。
+      </p>
+
+      <p>
+        但强化铁米粉里的铁是非血红素铁，吸收率只有约 5%。而蛋黄、红肉、肝脏里的血红素铁，吸收率高达 25–30%。如果补铁是目标，米粉并不是最优解。
+      </p>
+
+      <div class="callout">
+        <span class="callout-label">实践小结</span>
+        <p>我们给小伍的第一口辅食是蒸南瓜泥，第三周引入蛋黄，第五周开始少量鸡肝。米类食物在两个月后才正式加入，那时候他的消化已经建立了一定基础。</p>
+      </div>
+
+      <h2>我是怎么做决策的</h2>
+
+      <h3>第一步：先理解"辅食的目的是什么"</h3>
+
+      <p>
+        辅食不只是补充营养，更重要的是训练咀嚼、建立味觉多样性、培养肠道菌群对固体食物的适应能力。从这个角度看，食物的质地、引入顺序、每种食物的持续时长，都比"第一口吃什么"更重要。
+      </p>
+
+      <h3>第二步：用排除法筛选"低风险"食物</h3>
+
+      <p>
+        我参考了 FODMAP 框架——这个为成人肠易激综合征设计的饮食方案，其逻辑对婴儿消化负担同样有参考价值。低 FODMAP 的蔬菜（如胡萝卜、南瓜、菠菜）往往也是婴儿肠道负担最轻的选择。
+      </p>
+
+      <h3>第三步：观察而不是假设</h3>
+
+      <p>
+        每引入一种新食物，我们会保持 3–5 天的观察窗口，记录大便性状、皮肤状态、睡眠变化。这不是焦虑，而是建立数据——只有观察，才能在出现反应时快速定位原因。
+      </p>
+
+      <hr>
+
+      <p>
+        写这篇文章不是为了说"米粉不好"，而是想说：辅食添加这件事值得被认真推导，而不是直接继承别人的默认值。每个孩子的肠道发育节奏不同，每个家庭的饮食结构不同，值得有自己的思考路径。
+      </p>
+
+      <p>
+        如果你也在重新研究这件事，欢迎在小红书找我聊。
+      </p>
+
+      <div class="article-endnote">
+        <p>写于 2025 年 4 月 · 北京</p>
+        <p>参考：Mennella et al. (2011) · FODMAP 婴儿适用性文献综述 · 《中国居民膳食指南（2022）》婴幼儿部分</p>
+      </div>
+
+    </article>
+
+    <footer>
+      <p>© 2025 病恹恹的全职奶爸</p>
+      <p style="margin-top:.4rem">
+        小红书：<a href="#">@病恹恹的全职奶爸</a>
+        &nbsp;·&nbsp;
+        微信公众号：<a href="#">范同学</a>
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>
